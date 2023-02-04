@@ -24,7 +24,6 @@ class PlayerStates
         totalPlayed : 0,
 		sustainsHit : 0,
         totalNotesHit : 0.0,
-        totalNotes : 0,
         hitNotes : 0.0,
 		marvelous : 0,
 		sicks : 0,
@@ -54,7 +53,6 @@ class PlayerStates
         Stats.totalPlayed = 0;
 		Stats.sustainsHit = 0;
         Stats.totalNotesHit = 0.0;
-        Stats.totalNotes = 0;
         Stats.hitNotes = 0.0;
 		Stats.marvelous = 0;
 		Stats.sicks = 0;

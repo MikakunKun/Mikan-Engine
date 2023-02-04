@@ -7287,11 +7287,11 @@ class PlayState extends MusicBeatState
 		}
 		else
 		{
+			statsToUse.totalNotesHit++;
 			if (ClientPrefs.UiStates == 'Leather-Engine')
 			{
 				if (cpuControlled)
 				{
-					totalNotesHit += 1;
 					note.ratingMod = 1;
 					if(!note.ratingDisabled)
 					{
@@ -7318,26 +7318,22 @@ class PlayState extends MusicBeatState
 					switch (daSusting)
 					{
 						case "shit": // shit
-							statsToUse.totalNotesHit += 0.25;
 							note.ratingMod = 0.25;
 							if(!note.ratingDisabled) statsToUse.shits++;
 							note.rating = 'shit';
 						case "bad": // bad
-							statsToUse.totalNotesHit += 0.5;
 							note.ratingMod = 0.5;
 							statsToUse.hitNoteAmount = 0.3;
 							
 							if(!note.ratingDisabled) statsToUse.bads++;
 							note.rating = 'bad';
 						case "good": // good
-							statsToUse.totalNotesHit += 0.8;
 							note.ratingMod = 0.8;
 							statsToUse.hitNoteAmount = 0.8;
 							
 							if(!note.ratingDisabled) statsToUse.goods++;
 							note.rating = 'good';
 						case "sick": // sick
-							statsToUse.totalNotesHit += 1;
 							note.ratingMod = 1;
 							statsToUse.hitNoteAmount = 1;
 							
@@ -7348,7 +7344,6 @@ class PlayState extends MusicBeatState
 							else
 								spawnNoteSplashDadOnNote(note);
 						case "marvelous":
-							statsToUse.totalNotesHit += 1;
 							note.ratingMod = 1;
 							if(!note.ratingDisabled)
 							{
@@ -7376,7 +7371,6 @@ class PlayState extends MusicBeatState
 			}
 			else
 			{
-				statsToUse.totalNotesHit += daRating.ratingMod;
 				note.ratingMod = daRating.ratingMod;
 				if(!note.ratingDisabled)
 					switch (daSusting)
@@ -8525,6 +8519,7 @@ class PlayState extends MusicBeatState
 					health -= daNote.missHealth * healthLoss;
 				boyfriendvocals.volume = 0;
 			}
+			statsToUse.totalNotesHit++; //not actually missing, just for working out the accuracy
 		}
 
 		if(instakillOnMiss)
@@ -10511,7 +10506,9 @@ class PlayState extends MusicBeatState
 	{
 		var statsToUse = getStats(playernum);
 
-		var notesAddedUp = statsToUse.sustainsHit + ((ClientPrefs.UiStates == 'Leather-Engine' && ClientPrefs.MarvelouTrue) ? statsToUse.marvelous + statsToUse.sicks : statsToUse.sicks) + (statsToUse.goods * 0.75) + (statsToUse.bads * 0.3) + (statsToUse.shits * 0.1);
+		var notesAddedUp = statsToUse.sustainsHit + (statsToUse.sicks) + (statsToUse.goods * 0.75) + (statsToUse.bads * 0.3) + (statsToUse.shits * 0.1);
+		if (ClientPrefs.UiStates == 'Leather-Engine' && ClientPrefs.MarvelouTrue)
+			notesAddedUp =  = statsToUse.sustainsHit + (statsToUse.marvelous + statsToUse.sicks) + (statsToUse.goods * 0.75) + (statsToUse.bads * 0.3) + (statsToUse.shits * 0.1);
 		statsToUse.accuracy = FlxMath.roundDecimal((notesAddedUp / statsToUse.totalNotesHit) * 100, 2);
 
 		updateRank(playernum);
