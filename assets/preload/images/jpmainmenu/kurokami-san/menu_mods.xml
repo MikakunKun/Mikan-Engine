@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="menu_mods.png">
+<SubTexture name="mods white0000" x="0" y="0" width="318" height="57" frameX="-22" frameY="-44" frameWidth="355" frameHeight="139" />
+<SubTexture name="mods basic0000" x="0" y="57" width="318" height="57" frameX="-22" frameY="-44" frameWidth="355" frameHeight="139" />
+</TextureAtlas>

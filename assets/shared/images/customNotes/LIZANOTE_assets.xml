@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="LIZANOTE_assets.png">
+	<!-- Created with Adobe Animate version 21.0.7.42652 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="A0000" x="0" y="161" width="160" height="177" pivotX="6.85" pivotY="20.95"/>
+	<SubTexture name="B0000" x="0" y="0" width="178" height="161" pivotX="21" pivotY="-0.25"/>
+	<SubTexture name="C0000" x="178" y="0" width="178" height="161" pivotX="0" pivotY="7.1"/>
+	<SubTexture name="D0000" x="160" y="161" width="161" height="178" pivotX="0" pivotY="0"/>
+	<SubTexture name="E0000" x="178" y="0" width="178" height="161" pivotX="0" pivotY="7.1"/>
+	<SubTexture name="F0000" x="0" y="161" width="160" height="177" pivotX="6.85" pivotY="20.95"/>
+	<SubTexture name="G0000" x="0" y="0" width="178" height="161" pivotX="21" pivotY="-0.25"/>
+	<SubTexture name="H0000" x="178" y="0" width="178" height="161" pivotX="0" pivotY="7.1"/>
+	<SubTexture name="I0000" x="160" y="161" width="161" height="178" pivotX="0" pivotY="0"/>
+</TextureAtlas>

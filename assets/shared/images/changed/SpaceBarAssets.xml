@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="SpaceBarAssets.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="spaceHit0000" x="0" y="0" width="740" height="509"/>
+	<SubTexture name="spaceHit0001" x="756" y="0" width="740" height="509"/>
+	<SubTexture name="spaceHit0002" x="756" y="0" width="740" height="509"/>
+	<SubTexture name="spaceHit0003" x="1512" y="0" width="740" height="509"/>
+	<SubTexture name="spaceHit0004" x="1512" y="0" width="740" height="509"/>
+	<SubTexture name="spaceHit0005" x="2268" y="0" width="740" height="509"/>
+	<SubTexture name="spaceHit0006" x="2268" y="0" width="740" height="509"/>
+	<SubTexture name="spaceHit0007" x="3024" y="0" width="740" height="509"/>
+	<SubTexture name="spaceNotHit0000" x="0" y="525" width="740" height="509"/>
+	<SubTexture name="spaceNotHit0001" x="756" y="525" width="740" height="509"/>
+	<SubTexture name="spaceNotHit0002" x="1512" y="525" width="740" height="509"/>
+	<SubTexture name="spaceNotHit0003" x="2268" y="525" width="740" height="509"/>
+	<SubTexture name="spaceNotHit0004" x="3024" y="525" width="740" height="509"/>
+	<SubTexture name="spaceNotHit0005" x="0" y="1050" width="740" height="509"/>
+	<SubTexture name="spaceNotHit0006" x="756" y="1050" width="740" height="509"/>
+	<SubTexture name="spaceNotHit0007" x="1512" y="1050" width="740" height="509"/>
+	<SubTexture name="spaceNotHit0008" x="2268" y="1050" width="740" height="509"/>
+	<SubTexture name="spaceNotHit0009" x="3024" y="1050" width="740" height="509"/>
+	<SubTexture name="spaceNotHit0010" x="0" y="1575" width="740" height="509"/>
+	<SubTexture name="spaceNotHit0011" x="756" y="1575" width="740" height="509"/>
+	<SubTexture name="spaceNotHit0012" x="1512" y="1575" width="740" height="509"/>
+	<SubTexture name="spaceNotHit0013" x="2268" y="1575" width="740" height="509"/>
+	<SubTexture name="spaceNotHit0014" x="3024" y="1575" width="740" height="509"/>
+	<SubTexture name="spaceNotHit0015" x="0" y="2100" width="740" height="509"/>
+	<SubTexture name="spaceNotHit0016" x="756" y="2100" width="740" height="509"/>
+	<SubTexture name="spaceNotHit0017" x="1512" y="2100" width="740" height="509"/>
+	<SubTexture name="spaceNotHit0018" x="2268" y="2100" width="740" height="509"/>
+	<SubTexture name="spaceNotHit0019" x="3024" y="2100" width="740" height="509"/>
+	<SubTexture name="spaceNotHit0020" x="0" y="2625" width="740" height="509"/>
+	<SubTexture name="spaceNotHit0021" x="756" y="2625" width="740" height="509"/>
+</TextureAtlas>

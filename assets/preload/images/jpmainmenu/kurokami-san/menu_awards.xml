@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="menu_awards.png">
+        <SubTexture name="awards white0000" x="0" y="0" width="197" height="99" pivotX="-37.35" pivotY="34.5"/>
+	<SubTexture name="awards basic0000"x="197" y="0" width="197" height="99" pivotX="-37.4" pivotY="183.85"/>
+</TextureAtlas>

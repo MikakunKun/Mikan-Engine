@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="WARNINGNOTE_assets.png">
+	<!-- Created with Adobe Animate version 22.0.2.168 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="warning0000" x="4" y="4" width="148" height="159"/>
+	<SubTexture name="warning hold end0000" x="156" y="4" width="50" height="64"/>
+	<SubTexture name="warning hold piece0000" x="4" y="167" width="50" height="44"/>
+</TextureAtlas>

@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="menu_sonota.png">
+<SubTexture name="sonota white0000" x="0" y="0" width="402" height="106" frameX="-50" frameY="-8" frameWidth="500" frameHeight="126" />
+<SubTexture name="sonota basic0000" x="0" y="106" width="402" height="106" frameX="-50" frameY="-8" frameWidth="500" frameHeight="126" />
+</TextureAtlas>
