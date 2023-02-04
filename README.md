@@ -20,7 +20,7 @@ Ui設定をもらった。
 # 使ったEngineのリンク
 (Forever Engineだけ全部GameJolt)
 ## Gamebanana
-Zoro Engine(GamebananaのLinkなし)
+[Zoro Engine](https://github.com/TheZoroForce240/FNF-Extra-Keys-V2/releases/tag/0.5) (GamebananaのLinkなし)
 
 [Lore Engine](https://gamebanana.com/mods/396147)
 
