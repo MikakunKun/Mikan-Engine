@@ -1,6 +1,5 @@
 # Friday Night Funkin' - Mikan-Engine
 このMikan Engineの元は、[Psych Engine](https://gamebanana.com/mods/309789)と呼ばれるものです。
-[Psych Engineのソースコード](https://github.com/ShadowMario/FNF-PsychEngine)はこちらから！
 Mikan Engineは色んなEngineの設定を含んでおります。
 
 # 使ったEngineの設定達
