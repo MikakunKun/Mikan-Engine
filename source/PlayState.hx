@@ -7307,7 +7307,7 @@ class PlayState extends MusicBeatState
 						}
 					}
 					
-					hitNoteAmount = 1;
+					statsToUse.hitNoteAmount = 1;
 					if (!player1)
 						spawnNoteSplashOnNote(note);
 					else
@@ -7348,7 +7348,7 @@ class PlayState extends MusicBeatState
 							else
 								spawnNoteSplashDadOnNote(note);
 						case "marvelous":
-							totalNotesHit += 1;
+							statsToUse.totalNotesHit += 1;
 							note.ratingMod = 1;
 							if(!note.ratingDisabled)
 							{
@@ -7372,11 +7372,11 @@ class PlayState extends MusicBeatState
 				}
 				score = 0;
 				songScore += Leatherscore;
-				hitNotes += hitNoteAmount;
+				statsToUse.hitNotes += statsToUse.hitNoteAmount;
 			}
 			else
 			{
-				totalNotesHit += daRating.ratingMod;
+				statsToUse.totalNotesHit += daRating.ratingMod;
 				note.ratingMod = daRating.ratingMod;
 				if(!note.ratingDisabled)
 					switch (daSusting)
@@ -9419,7 +9419,6 @@ class PlayState extends MusicBeatState
 				}
 				else
 					combo += 1;
-				popUpScore(note, note.strumTime, false, 1);
 			}
 			else
 			{
@@ -10487,9 +10486,6 @@ class PlayState extends MusicBeatState
 			statsToUse.misses > 1000,
 		];
 
-
-
-		
 		for (i in 0...accuracyToRank.length)
 		{
 			if (accuracyToRank[i])
@@ -10540,9 +10536,13 @@ class PlayState extends MusicBeatState
 		var statsToUse = getStats(playernum);
 
 		statsToUse.scorelerp = Math.floor(FlxMath.lerp(statsToUse.scorelerp, statsToUse.songScore, 0.4)); //funni lerp
+		statsToUse.acclerp = FlxMath.roundDecimal(FlxMath.lerp(statsToUse.acclerp, statsToUse.accuracy, 0.4), 2);
 
 		if (Math.abs(statsToUse.scorelerp - statsToUse.songScore) <= 10)
 			statsToUse.scorelerp = statsToUse.songScore;
+
+		if ((statsToUse.acclerp - statsToUse.accuracy) <= 0.05)
+			statsToUse.acclerp = statsToUse.accuracy;
 
 		var score = "Score:" + statsToUse.scorelerp;
 		var rank = "Rank: " + statsToUse.curRank;
@@ -10559,12 +10559,12 @@ class PlayState extends MusicBeatState
 		var hp = "Health: " + Math.floor((playernum == 1 ? bfhealth : dadhealth) * 500) / 10 + '%';
 		var minhp = "MinHealth: " + Math.floor(minhealth * 500) / 10 + '%';
 
-		var listOShit = [score, rank, acc, miss, "", "", sick, good, bad, shit, comb, highestcomb, maxhp, hp, minhp];
+		var listOShit = [score, rank, acc, miss, sick, good, bad, shit, comb, highestcomb, maxhp, hp, minhp];
 		var text = "";
 		text = "";
 		for (i in 0...listOShit.length)
 		{
-			if ((i == 6 || i == 10))
+			if ((i == 4 || i == 8 || i == 10))
 				text += "\n";
 
 			/*
