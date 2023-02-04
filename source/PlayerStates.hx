@@ -18,10 +18,12 @@ class PlayerStates
 		scorelerp : 0,
         songHits : 0,
         accuracy : 0.0,
+		acclerp : 0.0,
 		curRank : "None",
+		hitNoteAmount : 0.0,
         totalPlayed : 0,
 		sustainsHit : 0,
-        totalNotesHit : 0,
+        totalNotesHit : 0.0,
         totalNotes : 0,
         hitNotes : 0.0,
 		marvelous : 0,
@@ -46,10 +48,12 @@ class PlayerStates
         Stats.scorelerp = 0;
 		Stats.songHits = 0;
         Stats.accuracy = 0.0;
+        Stats.acclerp = 0.0;
 		Stats.curRank = "None";
+		Stats.hitNoteAmount = 0.0;
         Stats.totalPlayed = 0;
 		Stats.sustainsHit = 0;
-        Stats.totalNotesHit = 0;
+        Stats.totalNotesHit = 0.0;
         Stats.totalNotes = 0;
         Stats.hitNotes = 0.0;
 		Stats.marvelous = 0;

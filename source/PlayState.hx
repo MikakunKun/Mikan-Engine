@@ -7318,28 +7318,28 @@ class PlayState extends MusicBeatState
 					switch (daSusting)
 					{
 						case "shit": // shit
-							totalNotesHit += 0.25;
+							statsToUse.totalNotesHit += 0.25;
 							note.ratingMod = 0.25;
 							if(!note.ratingDisabled) statsToUse.shits++;
 							note.rating = 'shit';
 						case "bad": // bad
-							totalNotesHit += 0.5;
+							statsToUse.totalNotesHit += 0.5;
 							note.ratingMod = 0.5;
-							hitNoteAmount = 0.3;
+							statsToUse.hitNoteAmount = 0.3;
 							
 							if(!note.ratingDisabled) statsToUse.bads++;
 							note.rating = 'bad';
 						case "good": // good
-							totalNotesHit += 0.8;
+							statsToUse.totalNotesHit += 0.8;
 							note.ratingMod = 0.8;
-							hitNoteAmount = 0.8;
+							statsToUse.hitNoteAmount = 0.8;
 							
 							if(!note.ratingDisabled) statsToUse.goods++;
 							note.rating = 'good';
 						case "sick": // sick
-							totalNotesHit += 1;
+							statsToUse.totalNotesHit += 1;
 							note.ratingMod = 1;
-							hitNoteAmount = 1;
+							statsToUse.hitNoteAmount = 1;
 							
 							if(!note.ratingDisabled) statsToUse.sicks++;
 							note.rating = 'sick';
@@ -7363,7 +7363,7 @@ class PlayState extends MusicBeatState
 									note.rating = 'sick';
 								}
 							}
-							hitNoteAmount = 1;
+							statsToUse.hitNoteAmount = 1;
 							if (!player1)
 								spawnNoteSplashOnNote(note);
 							else
@@ -7388,6 +7388,8 @@ class PlayState extends MusicBeatState
 						case "good": // good
 						statsToUse.goods++;
 						case "sick": // sick
+						statsToUse.sicks++;
+						case "marvelous":
 						statsToUse.sicks++;
 					}
 
@@ -9105,6 +9107,15 @@ class PlayState extends MusicBeatState
 				//if(combo > 9999) combo = 9999;
 				popUpScore(note, note.strumTime, false, 1);
 			}
+			else
+			{
+				if (characterPlayingAs == 2 || characterPlayingAs == 3)
+				{
+					var statsToUse = getStats(1);
+					statsToUse.sustainsHit++; //give acc from sustains
+					statsToUse.totalNotesHit++;
+				}
+			}
 
 			if (characterPlayingAs != -2 && characterPlayingAs != 3)
 				health += note.hitHealth * healthGain;
@@ -9114,7 +9125,7 @@ class PlayState extends MusicBeatState
 					dadhealth += note.hitHealth * healthGain;
 				if (!note.opponentSing)
 					bfhealth += note.hitHealth * healthGain;
-				MultiCalculateAccuracy(playernum);
+				MultiCalculateAccuracy(1);
 			}
 			
 			var isSus:Bool = note.isSustainNote; //GET OUT OF MY HEAD, GET OUT OF MY HEAD, GET OUT OF MY HEAD
@@ -9398,11 +9409,26 @@ class PlayState extends MusicBeatState
 			}
 			if (!note.isSustainNote)
 			{
-				var statsToUse = getStats(2);
-				statsToUse.combo += 1;
-				if (statsToUse.combo > statsToUse.highestCombo)
-					statsToUse.highestCombo = statsToUse.combo;
-				popUpScore(note, note.strumTime, true, 2);
+				if (characterPlayingAs == 2 || characterPlayingAs == 3)
+				{
+					var statsToUse = getStats(2);
+					statsToUse.combo += 1;
+					if (statsToUse.combo > statsToUse.highestCombo)
+						statsToUse.highestCombo = statsToUse.combo;
+					popUpScore(note, note.strumTime, true, 2);
+				}
+				else
+					combo += 1;
+				popUpScore(note, note.strumTime, false, 1);
+			}
+			else
+			{
+				if (characterPlayingAs == 2 || characterPlayingAs == 3)
+				{
+					var statsToUse = getStats(1);
+					statsToUse.sustainsHit++; //give acc from sustains
+					statsToUse.totalNotesHit++;
+				}
 			}
 
 			if (characterPlayingAs == 2)
@@ -9413,7 +9439,7 @@ class PlayState extends MusicBeatState
 					dadhealth += note.hitHealth * healthGain;
 				if (!note.opponentSing)
 					bfhealth += note.hitHealth * healthGain;
-				MultiCalculateAccuracy(playernum);
+				MultiCalculateAccuracy(2);
 			}
 
 			var isSus:Bool = note.isSustainNote; //GET OUT OF MY HEAD, GET OUT OF MY HEAD, GET OUT OF MY HEAD
@@ -9555,7 +9581,7 @@ class PlayState extends MusicBeatState
 				if(note.isSustainNote && !note.animation.curAnim.name.endsWith('end')) {
 					time += 0.15;
 				}
-				StrumPlayAnim(false, Std.int(Math.abs(note.noteData)) % Note.ammo[mania], time);
+				StrumPlayAnim(true, Std.int(Math.abs(note.noteData)) % Note.ammo[mania], time);
 			} else {
 				var spr:StrumNote = playerStrums1.members[note.noteData];
 				if(spr != null)	
