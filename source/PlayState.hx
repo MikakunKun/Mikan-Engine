@@ -4939,78 +4939,157 @@ class PlayState extends MusicBeatState
 
 		if (characterPlayingAs != -1)
 		{
-			var ret:Array<Dynamic> = [callOnLuas('onIconUpdate', ["player"]), callOnHaxes('onIconUpdate', ["player"])];
-			if (!ret.contains(FunkinLua.Function_Stop))
+			if (characterPlayingAs != -2 && characterPlayingAs != 3)
 			{
-				if (characterPlayingAs != -2 && characterPlayingAs != 3)
-					if (iconP1.animation.frames == 3) {
-						if (healthBar.percent < 20)
-							iconP1.animation.curAnim.curFrame = 1;
-						else if (healthBar.percent > 80)
-							iconP1.animation.curAnim.curFrame = 2;
-						else
+				var ret:Array<Dynamic> = [callOnLuas('onIconUpdate', ["player"]), callOnHaxes('onIconUpdate', ["player"])];
+				if (!ret.contains(FunkinLua.Function_Stop))
+				{
+					if (characterPlayingAs != -2 && characterPlayingAs != 3)
+						if (iconP1.animation.frames == 3) {
+							if (healthBar.percent < 20)
+								iconP1.animation.curAnim.curFrame = 1;
+							else if (healthBar.percent > 80)
+								iconP1.animation.curAnim.curFrame = 2;
+							else
+								iconP1.animation.curAnim.curFrame = 0;
+						} else if (iconP1.animation.frames == 1) {
 							iconP1.animation.curAnim.curFrame = 0;
-					} else if (iconP1.animation.frames == 1) {
-						iconP1.animation.curAnim.curFrame = 0;
-					} else {
-						if (healthBar.percent < 20)
-							iconP1.animation.curAnim.curFrame = 1;
-						else
+						} else {
+							if (healthBar.percent < 20)
+								iconP1.animation.curAnim.curFrame = 1;
+							else
+								iconP1.animation.curAnim.curFrame = 0;
+						}
+					else
+						if (iconP1.animation.frames == 3) {
+							if (bfhealthBar.percent < 20)
+								iconP1.animation.curAnim.curFrame = 1;
+							else if (bfhealthBar.percent > 80)
+								iconP1.animation.curAnim.curFrame = 2;
+							else
+								iconP1.animation.curAnim.curFrame = 0;
+						} else if (iconP1.animation.frames == 1) {
 							iconP1.animation.curAnim.curFrame = 0;
-					}
-				else
-					if (iconP1.animation.frames == 3) {
-						if (bfhealthBar.percent < 20)
-							iconP1.animation.curAnim.curFrame = 1;
-						else if (bfhealthBar.percent > 80)
-							iconP1.animation.curAnim.curFrame = 2;
-						else
-							iconP1.animation.curAnim.curFrame = 0;
-					} else if (iconP1.animation.frames == 1) {
-						iconP1.animation.curAnim.curFrame = 0;
-					} else {
-						if (bfhealthBar.percent < 20)
-							iconP1.animation.curAnim.curFrame = 1;
-						else
-							iconP1.animation.curAnim.curFrame = 0;
-					}
+						} else {
+							if (bfhealthBar.percent < 20)
+								iconP1.animation.curAnim.curFrame = 1;
+							else
+								iconP1.animation.curAnim.curFrame = 0;
+						}
+				}
+				
+				var ret:Array<Dynamic> = [callOnLuas('onIconUpdate', ["opponent"]), callOnHaxes('onIconUpdate', ["opponent"])];
+				if (!ret.contains(FunkinLua.Function_Stop))
+				{
+					if (characterPlayingAs != -2 && characterPlayingAs != 3)
+						if (iconP2.animation.frames == 3) {
+							if (healthBar.percent > 80)
+								iconP2.animation.curAnim.curFrame = 1;
+							else if (healthBar.percent < 20)
+								iconP2.animation.curAnim.curFrame = 2;
+							else 
+								iconP2.animation.curAnim.curFrame = 0;
+						} else if (iconP2.animation.frames == 1) {
+							iconP2.animation.curAnim.curFrame = 0;
+						} else {
+							if (healthBar.percent > 80)
+								iconP2.animation.curAnim.curFrame = 1;
+							else 
+								iconP2.animation.curAnim.curFrame = 0;
+						}
+					else
+						if (iconP2.animation.frames == 3) {
+							if (dadhealthBar.percent > 80)
+								iconP2.animation.curAnim.curFrame = 1;
+							else if (dadhealthBar.percent < 20)
+								iconP2.animation.curAnim.curFrame = 2;
+							else
+								iconP2.animation.curAnim.curFrame = 0;
+						} else if (iconP2.animation.frames == 1) {
+							iconP2.animation.curAnim.curFrame = 0;
+						} else {
+							if (dadhealthBar.percent > 80)
+								iconP2.animation.curAnim.curFrame = 1;
+							else
+								iconP2.animation.curAnim.curFrame = 0;
+						}
+				}
 			}
-			
-			var ret:Array<Dynamic> = [callOnLuas('onIconUpdate', ["opponent"]), callOnHaxes('onIconUpdate', ["opponent"])];
-			if (!ret.contains(FunkinLua.Function_Stop))
+			else
 			{
-				if (characterPlayingAs != -2 && characterPlayingAs != 3)
-					if (iconP2.animation.frames == 3) {
-						if (healthBar.percent > 80)
-							iconP2.animation.curAnim.curFrame = 1;
-						else if (healthBar.percent < 20)
-							iconP2.animation.curAnim.curFrame = 2;
-						else 
+				var ret:Array<Dynamic> = [callOnLuas('onIconUpdate', ["player"]), callOnHaxes('onIconUpdate', ["player"])];
+				if (!ret.contains(FunkinLua.Function_Stop))
+				{
+					if (characterPlayingAs != -2 && characterPlayingAs != 3)
+						if (iconP1.animation.frames == 3) {
+							if (healthBar.percent < 20)
+								iconP1.animation.curAnim.curFrame = 1;
+							else if (healthBar.percent > 80)
+								iconP1.animation.curAnim.curFrame = 2;
+							else
+								iconP1.animation.curAnim.curFrame = 0;
+						} else if (iconP1.animation.frames == 1) {
+							iconP1.animation.curAnim.curFrame = 0;
+						} else {
+							if (healthBar.percent < 20)
+								iconP1.animation.curAnim.curFrame = 1;
+							else
+								iconP1.animation.curAnim.curFrame = 0;
+						}
+					else
+						if (iconP1.animation.frames == 3) {
+							if (bfhealthBar.percent < 20)
+								iconP1.animation.curAnim.curFrame = 1;
+							else if (bfhealthBar.percent > 80)
+								iconP1.animation.curAnim.curFrame = 2;
+							else
+								iconP1.animation.curAnim.curFrame = 0;
+						} else if (iconP1.animation.frames == 1) {
+							iconP1.animation.curAnim.curFrame = 0;
+						} else {
+							if (bfhealthBar.percent < 20)
+								iconP1.animation.curAnim.curFrame = 1;
+							else
+								iconP1.animation.curAnim.curFrame = 0;
+						}
+				}
+				
+				var ret:Array<Dynamic> = [callOnLuas('onIconUpdate', ["opponent"]), callOnHaxes('onIconUpdate', ["opponent"])];
+				if (!ret.contains(FunkinLua.Function_Stop))
+				{
+					if (characterPlayingAs != -2 && characterPlayingAs != 3)
+						if (iconP2.animation.frames == 3) {
+							if (healthBar.percent > 90)
+								iconP2.animation.curAnim.curFrame = 1;
+							else if (healthBar.percent < 10)
+								iconP2.animation.curAnim.curFrame = 2;
+							else 
+								iconP2.animation.curAnim.curFrame = 0;
+						} else if (iconP2.animation.frames == 1) {
 							iconP2.animation.curAnim.curFrame = 0;
-					} else if (iconP2.animation.frames == 1) {
-						iconP2.animation.curAnim.curFrame = 0;
-					} else {
-						if (healthBar.percent > 80)
-							iconP2.animation.curAnim.curFrame = 1;
-						else 
+						} else {
+							if (healthBar.percent > 90)
+								iconP2.animation.curAnim.curFrame = 1;
+							else 
+								iconP2.animation.curAnim.curFrame = 0;
+						}
+					else
+						if (iconP2.animation.frames == 3) {
+							if (dadhealthBar.percent > 90)
+								iconP2.animation.curAnim.curFrame = 1;
+							else if (dadhealthBar.percent < 10)
+								iconP2.animation.curAnim.curFrame = 2;
+							else
+								iconP2.animation.curAnim.curFrame = 0;
+						} else if (iconP2.animation.frames == 1) {
 							iconP2.animation.curAnim.curFrame = 0;
-					}
-				else
-					if (iconP2.animation.frames == 3) {
-						if (dadhealthBar.percent > 80)
-							iconP2.animation.curAnim.curFrame = 1;
-						else if (dadhealthBar.percent < 20)
-							iconP2.animation.curAnim.curFrame = 2;
-						else
-							iconP2.animation.curAnim.curFrame = 0;
-					} else if (iconP2.animation.frames == 1) {
-						iconP2.animation.curAnim.curFrame = 0;
-					} else {
-						if (dadhealthBar.percent > 80)
-							iconP2.animation.curAnim.curFrame = 1;
-						else
-							iconP2.animation.curAnim.curFrame = 0;
-					}
+						} else {
+							if (dadhealthBar.percent > 90)
+								iconP2.animation.curAnim.curFrame = 1;
+							else
+								iconP2.animation.curAnim.curFrame = 0;
+						}
+				}
 			}
 		}
 
@@ -8549,7 +8628,7 @@ class PlayState extends MusicBeatState
 			statsToUse.totalPlayed++;
 
 		RecalculateRating(true);
-		if (characterPlayingAs != 2 && characterPlayingAs != 3)
+		if (characterPlayingAs == 2 || characterPlayingAs == 3)
 			MultiCalculateAccuracy(playernum);
 
 		if (ClientPrefs.UiStates == 'Leather-Engine' && ClientPrefs.sideRatings)
@@ -9109,6 +9188,7 @@ class PlayState extends MusicBeatState
 					var statsToUse = getStats(1);
 					statsToUse.sustainsHit++; //give acc from sustains
 					statsToUse.totalNotesHit++;
+					MultiCalculateAccuracy(1);
 				}
 			}
 
@@ -9120,7 +9200,6 @@ class PlayState extends MusicBeatState
 					dadhealth += note.hitHealth * healthGain;
 				if (!note.opponentSing)
 					bfhealth += note.hitHealth * healthGain;
-				MultiCalculateAccuracy(1);
 			}
 			
 			var isSus:Bool = note.isSustainNote; //GET OUT OF MY HEAD, GET OUT OF MY HEAD, GET OUT OF MY HEAD
@@ -9422,6 +9501,7 @@ class PlayState extends MusicBeatState
 					var statsToUse = getStats(1);
 					statsToUse.sustainsHit++; //give acc from sustains
 					statsToUse.totalNotesHit++;
+					MultiCalculateAccuracy(2);
 				}
 			}
 
@@ -9433,7 +9513,6 @@ class PlayState extends MusicBeatState
 					dadhealth += note.hitHealth * healthGain;
 				if (!note.opponentSing)
 					bfhealth += note.hitHealth * healthGain;
-				MultiCalculateAccuracy(2);
 			}
 
 			var isSus:Bool = note.isSustainNote; //GET OUT OF MY HEAD, GET OUT OF MY HEAD, GET OUT OF MY HEAD
@@ -10506,9 +10585,14 @@ class PlayState extends MusicBeatState
 	{
 		var statsToUse = getStats(playernum);
 
-		var notesAddedUp = statsToUse.sustainsHit + (statsToUse.sicks) + (statsToUse.goods * 0.75) + (statsToUse.bads * 0.3) + (statsToUse.shits * 0.1);
-		if (ClientPrefs.UiStates == 'Leather-Engine' && ClientPrefs.MarvelouTrue)
-			notesAddedUp =  statsToUse.sustainsHit + (statsToUse.marvelous + statsToUse.sicks) + (statsToUse.goods * 0.75) + (statsToUse.bads * 0.3) + (statsToUse.shits * 0.1);
+		var notesAddedUp = statsToUse.sustainsHit + (statsToUse.sicks) + (statsToUse.goods * 0.7) + (statsToUse.bads * 0.4) + (statsToUse.shits * 0);
+		if (ClientPrefs.UiStates == 'Leather-Engine')
+			if (ClientPrefs.MarvelouTrue)
+				notesAddedUp =  statsToUse.sustainsHit + (statsToUse.marvelous + statsToUse.sicks) + (statsToUse.goods * 0.8) + (statsToUse.bads * 0.5) + (statsToUse.shits * 0.265);
+			else
+				notesAddedUp =  statsToUse.sustainsHit + (statsToUse.sicks) + (statsToUse.goods * 0.8) + (statsToUse.bads * 0.5) + (statsToUse.shits * 0.25);
+		if (ClientPrefs.UiStates == 'Zoro-Engine')
+			notesAddedUp = statsToUse.sustainsHit + statsToUse.sicks + (statsToUse.goods * 0.75) + (statsToUse.bads * 0.3) + (statsToUse.shits * 0.1);
 		statsToUse.accuracy = FlxMath.roundDecimal((notesAddedUp / statsToUse.totalNotesHit) * 100, 2);
 
 		updateRank(playernum);
@@ -10551,10 +10635,18 @@ class PlayState extends MusicBeatState
 		var good = "Goods: " + statsToUse.goods;
 		var bad = "Bads: " + statsToUse.bads;
 		var shit = "Shits: " + statsToUse.shits;
+
 		var comb = "Combo: " + statsToUse.combo;
 		var highestcomb = "Highest Combo: " + statsToUse.highestCombo;
 		var maxhp = "MaxHealth: " + (Math.floor(maxhealth * 500) / 10) + '%';
 		var hp = "Health: " + Math.floor((playernum == 1 ? bfhealth : dadhealth) * 500) / 10 + '%';
+		if (characterPlayingAs == 2)
+		{
+			if (playernum != 1)
+				hp = "Health: " + Math.floor(health * 500) / 10 + '%';
+			if (playernum == 1)
+				hp = "Health: " + Math.floor(healthShown * 500) / 10 + '%';
+		}
 		var minhp = "MinHealth: " + Math.floor(minhealth * 500) / 10 + '%';
 
 		var listOShit = [player,score, rank, acc, miss, sick, good, bad, shit, comb, highestcomb, maxhp, hp, minhp];
