@@ -9188,9 +9188,10 @@ class PlayState extends MusicBeatState
 					var statsToUse = getStats(1);
 					statsToUse.sustainsHit++; //give acc from sustains
 					statsToUse.totalNotesHit++;
-					MultiCalculateAccuracy(1);
 				}
 			}
+			if (characterPlayingAs == 2 || characterPlayingAs == 3)
+				MultiCalculateAccuracy(1);
 
 			if (characterPlayingAs != -2 && characterPlayingAs != 3)
 				health += note.hitHealth * healthGain;
@@ -9491,8 +9492,6 @@ class PlayState extends MusicBeatState
 						statsToUse.highestCombo = statsToUse.combo;
 					popUpScore(note, note.strumTime, true, 2);
 				}
-				else
-					combo += 1;
 			}
 			else
 			{
@@ -9501,9 +9500,9 @@ class PlayState extends MusicBeatState
 					var statsToUse = getStats(1);
 					statsToUse.sustainsHit++; //give acc from sustains
 					statsToUse.totalNotesHit++;
-					MultiCalculateAccuracy(2);
 				}
 			}
+			MultiCalculateAccuracy(2);
 
 			if (characterPlayingAs == 2)
 				health -= note.hitHealth * healthGain;
@@ -10642,10 +10641,20 @@ class PlayState extends MusicBeatState
 		var hp = "Health: " + Math.floor((playernum == 1 ? bfhealth : dadhealth) * 500) / 10 + '%';
 		if (characterPlayingAs == 2)
 		{
-			if (playernum != 1)
-				hp = "Health: " + Math.floor(health * 500) / 10 + '%';
-			if (playernum == 1)
-				hp = "Health: " + Math.floor(healthShown * 500) / 10 + '%';
+			if (fliplol)
+			{
+				if (playernum == 1)
+					hp = "Health: " + Math.floor((maxhealth - health) * 500) / 10 + '%';
+				if (playernum != 1)
+					hp = "Health: " + Math.floor(health * 500) / 10 + '%';
+			}
+			else
+			{
+				if (playernum == 1)
+					hp = "Health: " + Math.floor(health * 500) / 10 + '%';
+				if (playernum != 1)
+					hp = "Health: " + Math.floor((maxhealth - health) * 500) / 10 + '%';
+			}
 		}
 		var minhp = "MinHealth: " + Math.floor(minhealth * 500) / 10 + '%';
 
