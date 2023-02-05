@@ -1414,8 +1414,8 @@ class PlayState extends MusicBeatState
 			minhealth = 0;
 
 		health = ((maxhealth + minhealth) / 2);
-		bfhealth = health / 2;
-		dadhealth = health / 2;
+		bfhealth = health;
+		dadhealth = health;
 
 		var doof:DialogueBox = new DialogueBox(false, dialogue);
 		// doof.x += 70;
@@ -1558,12 +1558,12 @@ class PlayState extends MusicBeatState
 			else
 			{
 				bfhealthBar = new FlxBar(healthBarBG.x + healthBarBG.width / 2 - 1, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width / 2 - 4), Std.int(healthBarBG.height - 8), this,
-					'bfhpShown', minhealth, maxhealth / 2);
+					'bfhpShown', minhealth, maxhealth);
 				bfhealthBar.scrollFactor.set();
 				add(bfhealthBar);
 
 				dadhealthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width / 2 - 4), Std.int(healthBarBG.height - 8), this,
-					'dadhpShown', minhealth, maxhealth / 2);
+					'dadhpShown', minhealth, maxhealth);
 				dadhealthBar.scrollFactor.set();
 				add(dadhealthBar);
 			}
@@ -1618,7 +1618,7 @@ class PlayState extends MusicBeatState
 			else
 			{
 				bfhealthBar = new FlxBar(foreverhealthBarBG.x + foreverhealthBarBG.width / 2 - 1, foreverhealthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(foreverhealthBarBG.width / 2 - 4), Std.int(foreverhealthBarBG.height - 8), this,
-					'bfhpShown', minhealth, maxhealth / 2);
+					'bfhpShown', minhealth, maxhealth);
 						
 				bfhealthBar.scrollFactor.set();
 				bfhealthBar.visible = !ClientPrefs.hideHud;
@@ -1626,7 +1626,7 @@ class PlayState extends MusicBeatState
 				add(bfhealthBar);
 
 				dadhealthBar = new FlxBar(foreverhealthBarBG.x + 4, foreverhealthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(foreverhealthBarBG.width / 2 - 4), Std.int(foreverhealthBarBG.height - 8), this,
-					'dadhpShown', minhealth, maxhealth / 2);
+					'dadhpShown', minhealth, maxhealth);
 						
 				dadhealthBar.scrollFactor.set();
 				dadhealthBar.visible = !ClientPrefs.hideHud;
@@ -1660,7 +1660,7 @@ class PlayState extends MusicBeatState
 			else
 			{
 				bfhealthBar = new FlxBar(healthBarBG.x + healthBarBG.width / 2 - 1, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width / 2 - 4), Std.int(healthBarBG.height - 8), this,
-					'bfhpShown', minhealth, maxhealth / 2);
+					'bfhpShown', minhealth, maxhealth);
 				bfhealthBar.scrollFactor.set();
 				bfhealthBar.visible = !ClientPrefs.hideHud;
 				bfhealthBar.alpha = ClientPrefs.healthBarAlpha;
@@ -1671,7 +1671,7 @@ class PlayState extends MusicBeatState
 				add(bfhealthBar);
 
 				dadhealthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width / 2 - 4), Std.int(healthBarBG.height - 8), this,
-					'dadhpShown', minhealth, maxhealth / 2);
+					'dadhpShown', minhealth, maxhealth);
 				dadhealthBar.scrollFactor.set();
 				dadhealthBar.visible = !ClientPrefs.hideHud;
 				dadhealthBar.alpha = ClientPrefs.healthBarAlpha;
@@ -4909,11 +4909,11 @@ class PlayState extends MusicBeatState
 		if (health > maxhealth)
 			health = maxhealth;
 		
-		if (dadhealth > maxhealth / 2)
-			dadhealth = maxhealth / 2;
+		if (dadhealth > maxhealth)
+			dadhealth = maxhealth;
 		
-		if (bfhealth > maxhealth / 2)
-			bfhealth = maxhealth / 2;
+		if (bfhealth > maxhealth)
+			bfhealth = maxhealth;
 
 		if (HealthRight)
 			if (characterPlayingAs == -1)
@@ -4928,13 +4928,13 @@ class PlayState extends MusicBeatState
 
 		if (HealthRight)
 		{
-			dadhpShown = maxhealth / 2 - dadhealth;
+			dadhpShown = maxhealth - dadhealth;
 			bfhpShown = bfhealth;
 		}
 		else
 		{
 			bfhpShown = dadhealth;
-			dadhpShown = maxhealth / 2 - bfhealth;
+			dadhpShown = maxhealth - bfhealth;
 		}
 
 		if (characterPlayingAs != -1)
@@ -5793,10 +5793,10 @@ class PlayState extends MusicBeatState
 					else
 					{
 						bfhealthBar = new FlxBar(healthBarBG.x + healthBarBG.width / 2 - 1, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width / 2 - 4), Std.int(healthBarBG.height - 8), this,
-							'bfhpShown', minhealth, maxhealth / 2);
+							'bfhpShown', minhealth, maxhealth);
 		
 						dadhealthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width / 2 - 4), Std.int(healthBarBG.height - 8), this,
-							'dadhpShown', minhealth, maxhealth / 2);
+							'dadhpShown', minhealth, maxhealth);
 					}
 				}
 				else
@@ -5807,10 +5807,10 @@ class PlayState extends MusicBeatState
 					else
 					{
 						bfhealthBar = new FlxBar(foreverhealthBarBG.x + foreverhealthBarBG.width / 2 - 1, foreverhealthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(foreverhealthBarBG.width / 2 - 4), Std.int(foreverhealthBarBG.height - 8), this,
-							'bfhpShown', minhealth, maxhealth / 2);
+							'bfhpShown', minhealth, maxhealth);
 		
 						dadhealthBar = new FlxBar(foreverhealthBarBG.x + 4, foreverhealthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(foreverhealthBarBG.width / 2 - 4), Std.int(foreverhealthBarBG.height - 8), this,
-							'dadhpShown', minhealth, maxhealth / 2);
+							'dadhpShown', minhealth, maxhealth);
 					}
 				}
 				
@@ -10508,7 +10508,7 @@ class PlayState extends MusicBeatState
 
 		var notesAddedUp = statsToUse.sustainsHit + (statsToUse.sicks) + (statsToUse.goods * 0.75) + (statsToUse.bads * 0.3) + (statsToUse.shits * 0.1);
 		if (ClientPrefs.UiStates == 'Leather-Engine' && ClientPrefs.MarvelouTrue)
-			notesAddedUp =  = statsToUse.sustainsHit + (statsToUse.marvelous + statsToUse.sicks) + (statsToUse.goods * 0.75) + (statsToUse.bads * 0.3) + (statsToUse.shits * 0.1);
+			notesAddedUp =  statsToUse.sustainsHit + (statsToUse.marvelous + statsToUse.sicks) + (statsToUse.goods * 0.75) + (statsToUse.bads * 0.3) + (statsToUse.shits * 0.1);
 		statsToUse.accuracy = FlxMath.roundDecimal((notesAddedUp / statsToUse.totalNotesHit) * 100, 2);
 
 		updateRank(playernum);
@@ -10541,6 +10541,7 @@ class PlayState extends MusicBeatState
 		if ((statsToUse.acclerp - statsToUse.accuracy) <= 0.05)
 			statsToUse.acclerp = statsToUse.accuracy;
 
+		var player = "Player:" + (playernum == 1 ? 'P1' : 'P2');
 		var score = "Score:" + statsToUse.scorelerp;
 		var rank = "Rank: " + statsToUse.curRank;
 		var acc = "Accuracy: " + statsToUse.acclerp + "%";
@@ -10552,16 +10553,16 @@ class PlayState extends MusicBeatState
 		var shit = "Shits: " + statsToUse.shits;
 		var comb = "Combo: " + statsToUse.combo;
 		var highestcomb = "Highest Combo: " + statsToUse.highestCombo;
-		var maxhp = "MaxHealth: " + (Math.floor(maxhealth * 500) / 10)/2 + '%';
+		var maxhp = "MaxHealth: " + (Math.floor(maxhealth * 500) / 10) + '%';
 		var hp = "Health: " + Math.floor((playernum == 1 ? bfhealth : dadhealth) * 500) / 10 + '%';
 		var minhp = "MinHealth: " + Math.floor(minhealth * 500) / 10 + '%';
 
-		var listOShit = [score, rank, acc, miss, sick, good, bad, shit, comb, highestcomb, maxhp, hp, minhp];
+		var listOShit = [player,score, rank, acc, miss, sick, good, bad, shit, comb, highestcomb, maxhp, hp, minhp];
 		var text = "";
 		text = "";
 		for (i in 0...listOShit.length)
 		{
-			if ((i == 4 || i == 8 || i == 10))
+			if ((i == 5 || i == 9 || i == 11))
 				text += "\n";
 
 			/*
