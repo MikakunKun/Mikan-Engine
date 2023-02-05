@@ -10541,7 +10541,7 @@ class PlayState extends MusicBeatState
 		if ((statsToUse.acclerp - statsToUse.accuracy) <= 0.05)
 			statsToUse.acclerp = statsToUse.accuracy;
 
-		var player = "Player:" + (playernum == 1 ? 'P1' : 'P2');
+		var player = "Player:" + (playernum == 1 ? 'P2' : 'P1');
 		var score = "Score:" + statsToUse.scorelerp;
 		var rank = "Rank: " + statsToUse.curRank;
 		var acc = "Accuracy: " + statsToUse.acclerp + "%";
