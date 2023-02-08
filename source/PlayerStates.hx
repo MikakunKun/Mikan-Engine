@@ -14,6 +14,8 @@ the strum group class has the rest of the stuff (notes, notesplash and strum not
 class PlayerStates
 {
     public var Stats = {
+		botPlay : false,
+		fullCombo : true,
 		songScore : 0,
 		scorelerp : 0,
         songHits : 0,
@@ -43,6 +45,8 @@ class PlayerStates
 
     public function resetStats()
     {
+		Stats.botPlay = false;
+		Stats.fullCombo = true;
         Stats.songScore = 0;
         Stats.scorelerp = 0;
 		Stats.songHits = 0;

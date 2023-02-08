@@ -5537,7 +5537,7 @@ class PlayState extends MusicBeatState
 							else
 								noteMiss(daNote, 2);
 						}
-						
+
 						daNote.active = false;
 						daNote.visible = false;
 
@@ -7479,6 +7479,9 @@ class PlayState extends MusicBeatState
 					else
 						spawnNoteSplashDadOnNote(note);
 				}
+				if(statsToUse.fullCombo)
+					if (statsToUse.shits >= 1 || statsToUse.bads >= 1 || statsToUse.goods >= 1)
+						statsToUse.fullCombo = false;
 			}
 		}
 
@@ -7516,13 +7519,30 @@ class PlayState extends MusicBeatState
 			pixelShitPart2 = '-pixel';
 		}
 
-		if ((ratingPercent == 1 && ClientPrefs.UiStates == 'Forever-Engine' && (!cpuControlled || !practiceMode)))
-			rating.loadGraphic(Paths.image(pixelShitPart1 + 'allsick' + pixelShitPart2));
+		if (ClientPrefs.UiStates == 'Forever-Engine')
+		{
+			if (characterPlayingAs != 2 && characterPlayingAs != 3)
+			{
+				if ((ratingPercent == 1 && (!cpuControlled || !practiceMode)))
+					rating.loadGraphic(Paths.image(pixelShitPart1 + 'allsick' + pixelShitPart2));
+				else
+					rating.loadGraphic(Paths.image(pixelShitPart1 + daRating.image + pixelShitPart2));
+			}
+			else
+			{
+				if (statsToUse.fullCombo && (!cpuControlled || !practiceMode))
+					rating.loadGraphic(Paths.image(pixelShitPart1 + 'allsick' + pixelShitPart2));
+				else
+					rating.loadGraphic(Paths.image(pixelShitPart1 + daRating.image + pixelShitPart2));
+			}
+		}
 		else
+		{
 			if (ClientPrefs.UiStates == 'Leather-Engine')
 				rating.loadGraphic(Paths.image(pixelShitPart1 + daSusting + pixelShitPart2));
 		    else
 				rating.loadGraphic(Paths.image(pixelShitPart1 + daRating.image + pixelShitPart2));
+		}
 
 		if(!ClientPrefs.comboCamera)
 			rating.cameras = [camHUD];
@@ -7691,80 +7711,100 @@ class PlayState extends MusicBeatState
 		{
 			var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'num' + Std.int(i) + pixelShitPart2));
 
-			if (ratingPercent == 1 && ClientPrefs.UiStates == 'Forever-Engine' && (!cpuControlled || !practiceMode))
-				numScore = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'asnum' + Std.int(i) + pixelShitPart2));
+			if (ClientPrefs.UiStates == 'Forever-Engine')
+			{
+				if (characterPlayingAs != 2 && characterPlayingAs != 3)
+				{
+					if ((ratingPercent == 1 && (!cpuControlled || !practiceMode)))
+						numScore = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'asnum' + Std.int(i) + pixelShitPart2));
+					else
+						numScore = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'num' + Std.int(i) + pixelShitPart2));
+				}
+				else
+				{
+					if (statsToUse.fullCombo && (!cpuControlled || !practiceMode))
+						numScore = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'asnum' + Std.int(i) + pixelShitPart2));
+					else
+						numScore = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'num' + Std.int(i) + pixelShitPart2));
+				}
+			}
 			else
-				numScore = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'num' + Std.int(i) + pixelShitPart2));
+			{
+				if (ClientPrefs.UiStates == 'Leather-Engine')
+					numScore = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'asnum' + Std.int(i) + pixelShitPart2));
+				else
+					numScore = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'num' + Std.int(i) + pixelShitPart2));
+			}
 
 			if(!ClientPrefs.comboCamera)
 				numScore.cameras = [camHUD];
 
 			numScore.screenCenter();
+		}
 			
 		if (ClientPrefs.ratingCharacter)
-			{
-				numScore.cameras = [camGame];
-				onRatingOffsetCamera(note, numScore);
-				numScore.x += (43 * daLoop) - 90;
-			}
-			else
-				numScore.x = coolText.x + (43 * daLoop) - 90;
-
-			numScore.y += 80;
-			numScore.x += ClientPrefs.comboOffset[2];
-			numScore.y -= ClientPrefs.comboOffset[3];
-			
-			if (!ClientPrefs.comboStacking)
-				lastScore.push(numScore);
-
-			if (!PlayState.isPixelStage)
-			{
-				numScore.antialiasing = ClientPrefs.globalAntialiasing;
-				numScore.setGraphicSize(Std.int(numScore.width * 0.5));
-			}
-			else
-			{
-				numScore.setGraphicSize(Std.int(numScore.width * daPixelZoom));
-			}
-			numScore.updateHitbox();
-
-			numScore.acceleration.y = FlxG.random.int(200, 300) * playbackRate * playbackRate;
-			numScore.velocity.y -= FlxG.random.int(140, 160) * playbackRate;
-			numScore.velocity.x = FlxG.random.float(-5, 5) * playbackRate;
-			numScore.visible = !ClientPrefs.hideHud;
-
-			//if (combo >= 10 || combo == 0)
-			if(showComboNum)
-				insert(members.indexOf(strumLineNotes), numScore);
-
-			if (accuracyTween == null)
-			{
-				accuracyTween = FlxTween.tween(accuracyText, {alpha: 0}, 0.2 / playbackRate, {
-					startDelay: Conductor.crochet * 0.001 / playbackRate
-				});
-			}
-			else
-			{
-				accuracyText.alpha = 1;
-	
-				accuracyTween.cancel();
-	
-				accuracyTween = FlxTween.tween(accuracyText, {alpha: 0}, 0.2 / playbackRate, {
-					startDelay: Conductor.crochet * 0.001 / playbackRate
-				});
-			}
-			
-			FlxTween.tween(numScore, {alpha: 0}, 0.2 / playbackRate, {
-				onComplete: function(tween:FlxTween)
-				{
-					numScore.destroy();
-				},
-				startDelay: Conductor.crochet * 0.002 / playbackRate
-			});
-
-			daLoop++;
-			if(numScore.x > xThing) xThing = numScore.x;
+		{
+			numScore.cameras = [camGame];
+			onRatingOffsetCamera(note, numScore);
+			numScore.x += (43 * daLoop) - 90;
 		}
+		else
+			numScore.x = coolText.x + (43 * daLoop) - 90;
+		
+		numScore.y += 80;
+		numScore.x += ClientPrefs.comboOffset[2];
+		numScore.y -= ClientPrefs.comboOffset[3];
+		
+		if (!ClientPrefs.comboStacking)
+			lastScore.push(numScore);
+
+		if (!PlayState.isPixelStage)
+		{
+			numScore.antialiasing = ClientPrefs.globalAntialiasing;
+			numScore.setGraphicSize(Std.int(numScore.width * 0.5));
+		}
+		else
+		{
+			numScore.setGraphicSize(Std.int(numScore.width * daPixelZoom));
+		}
+		numScore.updateHitbox();
+
+		numScore.acceleration.y = FlxG.random.int(200, 300) * playbackRate * playbackRate;
+		numScore.velocity.y -= FlxG.random.int(140, 160) * playbackRate;
+		numScore.velocity.x = FlxG.random.float(-5, 5) * playbackRate;
+		numScore.visible = !ClientPrefs.hideHud;
+
+		//if (combo >= 10 || combo == 0)
+		if(showComboNum)
+			insert(members.indexOf(strumLineNotes), numScore);
+
+		if (accuracyTween == null)
+		{
+			accuracyTween = FlxTween.tween(accuracyText, {alpha: 0}, 0.2 / playbackRate, {
+				startDelay: Conductor.crochet * 0.001 / playbackRate
+			});
+		}
+		else
+		{
+			accuracyText.alpha = 1;
+
+			accuracyTween.cancel();
+
+			accuracyTween = FlxTween.tween(accuracyText, {alpha: 0}, 0.2 / playbackRate, {
+				startDelay: Conductor.crochet * 0.001 / playbackRate
+			});
+		}
+		
+		FlxTween.tween(numScore, {alpha: 0}, 0.2 / playbackRate, {
+			onComplete: function(tween:FlxTween)
+			{
+				numScore.destroy();
+			},
+			startDelay: Conductor.crochet * 0.002 / playbackRate
+		});
+
+		daLoop++;
+		if(numScore.x > xThing) xThing = numScore.x;
 		comboSpr.x = xThing + 50;
 		/*
 			trace(combo);
