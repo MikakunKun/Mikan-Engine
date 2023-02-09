@@ -4114,60 +4114,121 @@ class PlayState extends MusicBeatState
 			}
 			else
 			{
-				if (ClientPrefs.showKeybindsOnStart && Play) {
-					for (j in 0...bfkeysArray[mania][i].length) {
-						var daKeyTxt:FlxText = new FlxText(babyArrow.x, babyArrow.y - 10, 0, InputFormatter.getKeyName(bfkeysArray[mania][i][j]), 32);
-						daKeyTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-						daKeyTxt.borderSize = 1.25;
-						daKeyTxt.alpha = 0;
-						daKeyTxt.size = 32 - mania; //essentially if i ever add 0k!?!?
-						daKeyTxt.x = babyArrow.x+(babyArrow.width / 2);
-						daKeyTxt.x -= daKeyTxt.width / 2;
-						add(daKeyTxt);
-						daKeyTxt.cameras = [camHUD];
-						var textY:Float = (j == 0 ? babyArrow.y - 32 : ((babyArrow.y - 32) + babyArrow.height) - daKeyTxt.height);
-						daKeyTxt.y = textY;
-	
-						if (mania > 1 && !skipArrowStartTween) {
-							FlxTween.tween(daKeyTxt, {y: textY + 32, alpha: 1}, twnDuration, {ease: FlxEase.circOut, startDelay: twnStart});
-						} else {
-							daKeyTxt.y += 16;
-							daKeyTxt.alpha = 1;
+				if (ClientPrefs.showKeybindsOnStart)
+				{
+					if (Play)
+					{
+						for (j in 0...bfkeysArray[mania][i].length)
+						{
+							if (i == 0)
+							{
+								var daNameTxt:FlxText = new FlxText(babyArrow.x, babyArrow.y - 10, 0, 'Player 2', 32);
+								daNameTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+								daNameTxt.borderSize = 1.25;
+								daNameTxt.alpha = 0;
+								daNameTxt.size = 32 - mania; //essentially if i ever add 0k!?!?
+								daNameTxt.x = babyArrow.x+(babyArrow.width / 2);
+								daNameTxt.x -= daNameTxt.width / 2;
+								add(daNameTxt);
+								daNameTxt.cameras = [camHUD];
+								var textY:Float = (babyArrow.y - 32 + ((babyArrow.y - 32) + babyArrow.height) - daNameTxt.height);
+								daNameTxt.y = textY;
+				
+								if (mania > 1 && !skipArrowStartTween) {
+									FlxTween.tween(daNameTxt, {y: textY + 32, alpha: 1}, twnDuration, {ease: FlxEase.circOut, startDelay: twnStart});
+								} else {
+									daNameTxt.y += 16;
+									daNameTxt.alpha = 1;
+								}
+								new FlxTimer().start(Conductor.crochet * 0.001 * 12, function(_) {
+									FlxTween.tween(daNameTxt, {y: daNameTxt.y + 32, alpha: 0}, twnDuration, {ease: FlxEase.circIn, startDelay: twnStart, onComplete:
+									function(t) {
+										remove(daNameTxt);
+									}});
+								});
+							}
+							var daKeyTxt:FlxText = new FlxText(babyArrow.x, babyArrow.y - 10, 0, InputFormatter.getKeyName(bfkeysArray[mania][i][j]), 32);
+							daKeyTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+							daKeyTxt.borderSize = 1.25;
+							daKeyTxt.alpha = 0;
+							daKeyTxt.size = 32 - mania; //essentially if i ever add 0k!?!?
+							daKeyTxt.x = babyArrow.x+(babyArrow.width / 2);
+							daKeyTxt.x -= daKeyTxt.width / 2;
+							add(daKeyTxt);
+							daKeyTxt.cameras = [camHUD];
+							var textY:Float = (j == 0 ? babyArrow.y - 32 : ((babyArrow.y - 32) + babyArrow.height) - daKeyTxt.height);
+							daKeyTxt.y = textY;
+			
+							if (mania > 1 && !skipArrowStartTween) {
+								FlxTween.tween(daKeyTxt, {y: textY + 32, alpha: 1}, twnDuration, {ease: FlxEase.circOut, startDelay: twnStart});
+							} else {
+								daKeyTxt.y += 16;
+								daKeyTxt.alpha = 1;
+							}
+							new FlxTimer().start(Conductor.crochet * 0.001 * 12, function(_) {
+								FlxTween.tween(daKeyTxt, {y: daKeyTxt.y + 32, alpha: 0}, twnDuration, {ease: FlxEase.circIn, startDelay: twnStart, onComplete:
+								function(t) {
+									remove(daKeyTxt);
+								}});
+							});
 						}
-						new FlxTimer().start(Conductor.crochet * 0.001 * 12, function(_) {
-							FlxTween.tween(daKeyTxt, {y: daKeyTxt.y + 32, alpha: 0}, twnDuration, {ease: FlxEase.circIn, startDelay: twnStart, onComplete:
-							function(t) {
-								remove(daKeyTxt);
-							}});
-						});
 					}
-				}
-				if (ClientPrefs.showKeybindsOnStart && !Play) {
-					for (j in 0...dadkeysArray[mania][i].length) {
-						var daKeyTxt:FlxText = new FlxText(babyArrow.x, babyArrow.y - 10, 0, InputFormatter.getKeyName(dadkeysArray[mania][i][j]), 32);
-						daKeyTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-						daKeyTxt.borderSize = 1.25;
-						daKeyTxt.alpha = 0;
-						daKeyTxt.size = 32 - mania; //essentially if i ever add 0k!?!?
-						daKeyTxt.x = babyArrow.x+(babyArrow.width / 2);
-						daKeyTxt.x -= daKeyTxt.width / 2;
-						add(daKeyTxt);
-						daKeyTxt.cameras = [camHUD];
-						var textY:Float = (j == 0 ? babyArrow.y - 32 : ((babyArrow.y - 32) + babyArrow.height) - daKeyTxt.height);
-						daKeyTxt.y = textY;
-	
-						if (mania > 1 && !skipArrowStartTween) {
-							FlxTween.tween(daKeyTxt, {y: textY + 32, alpha: 1}, twnDuration, {ease: FlxEase.circOut, startDelay: twnStart});
-						} else {
-							daKeyTxt.y += 16;
-							daKeyTxt.alpha = 1;
+					else
+					{
+						for (j in 0...dadkeysArray[mania][i].length)
+						{
+							if (i == 0)
+							{
+								var daNameTxt:FlxText = new FlxText(babyArrow.x, babyArrow.y - 10, 0, 'Player 1', 32);
+								daNameTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+								daNameTxt.borderSize = 1.25;
+								daNameTxt.alpha = 0;
+								daNameTxt.size = 32 - mania; //essentially if i ever add 0k!?!?
+								daNameTxt.x = babyArrow.x+(babyArrow.width / 2);
+								daNameTxt.x -= daNameTxt.width / 2;
+								add(daNameTxt);
+								daNameTxt.cameras = [camHUD];
+								var textY:Float = (babyArrow.y - 32 + ((babyArrow.y - 32) + babyArrow.height) - daNameTxt.height);
+								daNameTxt.y = textY;
+				
+								if (mania > 1 && !skipArrowStartTween) {
+									FlxTween.tween(daNameTxt, {y: textY + 32, alpha: 1}, twnDuration, {ease: FlxEase.circOut, startDelay: twnStart});
+								} else {
+									daNameTxt.y += 16;
+									daNameTxt.alpha = 1;
+								}
+								new FlxTimer().start(Conductor.crochet * 0.001 * 12, function(_) {
+									FlxTween.tween(daNameTxt, {y: daNameTxt.y + 32, alpha: 0}, twnDuration, {ease: FlxEase.circIn, startDelay: twnStart, onComplete:
+									function(t) {
+										remove(daNameTxt);
+									}});
+								});
+							}
+							var daKeyTxt:FlxText = new FlxText(babyArrow.x, babyArrow.y - 10, 0, InputFormatter.getKeyName(dadkeysArray[mania][i][j]), 32);
+							daKeyTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+							daKeyTxt.borderSize = 1.25;
+							daKeyTxt.alpha = 0;
+							daKeyTxt.size = 32 - mania; //essentially if i ever add 0k!?!?
+							daKeyTxt.x = babyArrow.x+(babyArrow.width / 2);
+							daKeyTxt.x -= daKeyTxt.width / 2;
+							add(daKeyTxt);
+							daKeyTxt.cameras = [camHUD];
+							var textY:Float = (j == 0 ? babyArrow.y - 32 : ((babyArrow.y - 32) + babyArrow.height) - daKeyTxt.height);
+							daKeyTxt.y = textY;
+		
+							if (mania > 1 && !skipArrowStartTween) {
+								FlxTween.tween(daKeyTxt, {y: textY + 32, alpha: 1}, twnDuration, {ease: FlxEase.circOut, startDelay: twnStart});
+							} else {
+								daKeyTxt.y += 16;
+								daKeyTxt.alpha = 1;
+							}
+							new FlxTimer().start(Conductor.crochet * 0.001 * 12, function(_) {
+								FlxTween.tween(daKeyTxt, {y: daKeyTxt.y + 32, alpha: 0}, twnDuration, {ease: FlxEase.circIn, startDelay: twnStart, onComplete:
+								function(t) {
+									remove(daKeyTxt);
+								}});
+							});
 						}
-						new FlxTimer().start(Conductor.crochet * 0.001 * 12, function(_) {
-							FlxTween.tween(daKeyTxt, {y: daKeyTxt.y + 32, alpha: 0}, twnDuration, {ease: FlxEase.circIn, startDelay: twnStart, onComplete:
-							function(t) {
-								remove(daKeyTxt);
-							}});
-						});
 					}
 				}
 			}
@@ -7480,7 +7541,7 @@ class PlayState extends MusicBeatState
 						spawnNoteSplashDadOnNote(note);
 				}
 				if(statsToUse.fullCombo)
-					if (statsToUse.shits >= 1 || statsToUse.bads >= 1 || statsToUse.goods >= 1)
+					if (statsToUse.misses >= 1 || statsToUse.shits >= 1 || statsToUse.bads >= 1 || statsToUse.goods >= 1)
 						statsToUse.fullCombo = false;
 			}
 		}
