@@ -517,11 +517,10 @@ class Note extends FlxPerspectiveSprite
 				for (i in 0...gfxLetter.length)
 				{
 					animation.addByPrefix(gfxLetter[i] + 'Scroll', gfxLetter[i] + '0');
-					animation.addByPrefix(gfxLetter[i] + 'hold', gfxLetter[i] + ' hold piece');
-					animation.addByPrefix(gfxLetter[i] + 'holdend', gfxLetter[i] + ' hold end');
-			
 					if (isSustainNote)
 					{
+						animation.addByPrefix(gfxLetter[i] + 'hold', gfxLetter[i] + ' hold piece');
+						animation.addByPrefix(gfxLetter[i] + 'holdend', gfxLetter[i] + ' hold end');
 					}
 				}
 		}

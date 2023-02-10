@@ -297,8 +297,9 @@ class PlayState extends MusicBeatState
 	public var bads:Int = 0;
 	public var shits:Int = 0;
 	
-	public var p1Ratings:PlayerStates = null;
-	public var p2Ratings:PlayerStates = null;
+	public var player1:PlayerStates = null;
+	public var player2:PlayerStates = null;
+	public var player3:PlayerStates = null;
 	public static var playerList:Array<PlayerStates> = [];
 
 	public var ranksList:Array<String> = ["Skill Issue", "E", "D", "C", "B", "A", "S"]; //for score text
@@ -560,14 +561,16 @@ class PlayState extends MusicBeatState
 			dadkeysArray = EKData.Keybinds.p1fill();
 			bfkeysArray = EKData.Keybinds.p2fill();
 	
-			p1Ratings = new PlayerStates();
-			p2Ratings = new PlayerStates();
+			player1 = new PlayerStates(1);
+			player2 = new PlayerStates(2);
+			player3 = new PlayerStates(3); //p3 is gf
 			
-			playerList.push(p1Ratings);
-			playerList.push(p2Ratings);
+			playerList.push(player1);
+			playerList.push(player2);
+			playerList.push(player3);
 
-			p1Ratings.resetStats();
-			p2Ratings.resetStats();
+			player1.resetStats();
+			player2.resetStats();
 		}
 		else
 			keysArray = EKData.Keybinds.fill();
@@ -10416,35 +10419,35 @@ class PlayState extends MusicBeatState
 			"Dad Side"
 			+ "\n"
 			+ "Sick: "
-			+ Std.string(p1Ratings[1])
+			+ Std.string(player1[1])
 			+ "\n"
 			+ "Good: "
-			+ Std.string(p1Ratings[2])
+			+ Std.string(player1[2])
 			+ "\n"
 			+ "Bad: "
-			+ Std.string(p1Ratings[3])
+			+ Std.string(player1[3])
 			+ "\n"
 			+ "Shit: "
-			+ Std.string(p1Ratings[4])
+			+ Std.string(player1[4])
 			+ "\n"
 			+ "Miss: "
-			+ Std.string(p1Ratings[5])
+			+ Std.string(player1[5])
 			+"\nBf Side"
 			+ "\n"
 			+ "Sick: "
-			+ Std.string(p2Ratings[1])
+			+ Std.string(player2[1])
 			+ "\n"
 			+ "Good: "
-			+ Std.string(p2Ratings[2])
+			+ Std.string(player2[2])
 			+ "\n"
 			+ "Bad: "
-			+ Std.string(p2Ratings[3])
+			+ Std.string(player2[3])
 			+ "\n"
 			+ "Shit: "
-			+ Std.string(p2Ratings[4])
+			+ Std.string(player2[4])
 			+ "\n"
 			+ "Miss: "
-			+ Std.string(p2Ratings[5])
+			+ Std.string(player2[5])
 			+ "\n";
 		*/
 	}
@@ -10706,10 +10709,10 @@ class PlayState extends MusicBeatState
 		var stats = null;
 		if (characterPlayingAs == 2 || characterPlayingAs == 3)
 		{
-			stats = p1Ratings.Stats;
+			stats = player1.Stats;
 	
 			if (playernum != 1)
-				stats = p2Ratings.Stats;
+				stats = player2.Stats;
 
 		}
 		return stats;
@@ -10850,13 +10853,13 @@ class PlayState extends MusicBeatState
 				if (ClientPrefs.Gengo == 'Jp')
 				{
 					scoreBar.text += divider + '精度: ' + '${Highscore.floorDecimal(ratingPercent * 100, 2)}%$ratingFC'; // Std.string(Math.floor(Timings.getAccuracy() * 100) / 100) + '%' + Timings.comboDisplay;
-					scoreBar.text += divider + 'コンボブレイク数: Dad側' + Std.string(p1Ratings[5]) + ' Bf側' + Std.string(p2Ratings[5]);
+					scoreBar.text += divider + 'コンボブレイク数: Dad側' + Std.string(player1[5]) + ' Bf側' + Std.string(player2[5]);
 					scoreBar.text += divider + 'ランク: ' + '$ratingName';
 				}
 				else
 				{
 					scoreBar.text += divider + 'Accuracy: ' + '${Highscore.floorDecimal(ratingPercent * 100, 2)}%$ratingFC'; // Std.string(Math.floor(Timings.getAccuracy() * 100) / 100) + '%' + Timings.comboDisplay;
-					scoreBar.text += divider + 'Combo Breaks: Dad Side' + Std.string(p1Ratings[5]) + ' Bf Side' + Std.string(p2Ratings[5]);
+					scoreBar.text += divider + 'Combo Breaks: Dad Side' + Std.string(player1[5]) + ' Bf Side' + Std.string(player2[5]);
 					scoreBar.text += divider + 'Rank: ' + '$ratingName';
 				}
 				*/
