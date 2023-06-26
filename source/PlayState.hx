@@ -1708,6 +1708,79 @@ class PlayState extends MusicBeatState
 			P2scoreTxt.y = 250;
 		}
 
+		var textYPos:Float = healthBarBG.y + 50;
+		var randomThingy:Int = FlxG.random.int(0, 21);
+		var engineName:String = 'stupid';
+		switch(randomThingy)
+	        {
+			case 0:
+				engineName = 'Dave ';
+			case 1:
+				engineName = 'Bambi ';
+			case 2:
+				engineName = 'Tristan ';
+			case 3:
+				engineName = 'Expunged ';
+			case 4:
+				engineName = 'Mr. Bambi ';
+			case 5:
+				engineName = 'TheBuilderXD ';
+			case 5:
+				engineName = 'Joke Bambi ';
+			case 6:
+				engineName = 'Marcello ';
+			case 7:
+				engineName = 'SillyFangirl osu ';
+			case 8:
+				engineName = 'Que Pro ';
+			case 9:
+				engineName = 'MoldyGH ';
+			case 10:
+				engineName = 'Cockey ';
+			case 11:
+				engineName = 'Pissey ';
+			case 12:
+				engineName = 'Shartey ';
+			case 13:
+				engineName = 'Pooper ';
+			case 14:
+				engineName = 'Expunged DX ';
+			case 15:
+				engineName = 'Pixe ';
+			case 16:
+				engineName = '0cksell ';
+			case 17:
+				engineName = 'Steve ';
+			case 18:
+				engineName = 'Optimus Prime ';
+			case 19:
+				engineName = 'Gummie ';
+			case 20:
+				engineName = 'Moggus ';
+			case 21:
+				engineName = 'MissingTextureMan101 ';
+		}
+
+		kadeEngineWatermark.setFormat(font, 16 * fontScaler, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		kadeEngineWatermark.scrollFactor.set();
+		kadeEngineWatermark.borderSize = 1.25 * fontScaler;
+		kadeEngineWatermark.antialiasing = true;
+		add(kadeEngineWatermark);
+
+		kadeEngineWatermark2 = new FlxText(4, textYPos + -20, 0, engineName + " (Psych Engine v6.3)", 16);
+                kadeEngineWatermark2.setFormat(font, 16 * fontScaler, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		kadeEngineWatermark2.scrollFactor.set();
+		kadeEngineWatermark2.borderSize = 1.25 * fontScaler;
+		kadeEngineWatermark2.antialiasing = FlxG.save.data.globalAntialiasing;
+		add(kadeEngineWatermark2);
+
+		kadeEngineWatermark3 = new FlxText(4, textYPos + -40, 0, "Plus Beta v1.0", 16);
+		kadeEngineWatermark3.setFormat(font, 16 * fontScaler, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		kadeEngineWatermark3.scrollFactor.set();
+		kadeEngineWatermark3.borderSize = 1.25 * fontScaler;
+		kadeEngineWatermark3.antialiasing = FlxG.save.data.globalAntialiasing;
+		add(kadeEngineWatermark3);
+
 		if (ClientPrefs.UiStates == 'Forever-Engine')
 		{
 			iconP1 = new HealthIcon(boyfriend.healthIcon, true);
