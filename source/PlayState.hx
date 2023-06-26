@@ -331,6 +331,13 @@ class PlayState extends MusicBeatState
 	public var camOther:FlxCamera;
 	public var cameraSpeed:Float = 1;
 
+	var font:String = Paths.font("comic.ttf");
+	var fontScaler:Int = 1;
+
+	var kadeEngineWatermark:FlxText;
+	var kadeEngineWatermark2:FlxText;
+	var kadeEngineWatermark3:FlxText;
+
 	var dialogue:Array<String> = ['blah blah blah', 'coolswag'];
 	var dialogueJson:DialogueFile = null;
 
