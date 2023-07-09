@@ -35,9 +35,9 @@ jobs:
           sudo apt-get install libvlccore-dev
           haxelib setup ~/haxelib
           haxelib install hxcpp > /dev/null
-          haxelib install lime 8.0.0
+          haxelib install lime
           haxelib install openfl
-          haxelib --never install flixel 4.11.0
+          haxelib --never install flixel
           haxelib run lime setup flixel
           haxelib run lime setup
           haxelib install flixel-tools
@@ -46,11 +46,8 @@ jobs:
           haxelib install tjson
           haxelib install hxjsonast
           haxelib install hxCodec
-          haxelib install haxeui-core
           haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit
           haxelib install hscript
-          haxelib git hscript-lore https://github.com/sayofthelor/hscript-lore
-          haxelib git flixel-shadertoy-shader-lr https://github.com/sayofthelor/flixel-shadertoy-shader-lr
           haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
           haxelib install hxcpp-debug-server
@@ -79,9 +76,9 @@ jobs:
         run: |
           haxelib setup C:/haxelib
           haxelib install hxcpp > nul
-          haxelib install lime 8.0.0
+          haxelib install lime
           haxelib install openfl
-          haxelib --never install flixel 4.11.0
+          haxelib --never install flixel
           haxelib run lime setup flixel
           haxelib run lime setup
           haxelib install flixel-tools
@@ -90,11 +87,8 @@ jobs:
           haxelib install tjson
           haxelib install hxjsonast
           haxelib install hxCodec
-          haxelib install haxeui-core
           haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit
           haxelib install hscript
-          haxelib git hscript-lore https://github.com/sayofthelor/hscript-lore
-          haxelib git flixel-shadertoy-shader-lr https://github.com/sayofthelor/flixel-shadertoy-shader-lr
           haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
           haxelib install hxcpp-debug-server
@@ -124,9 +118,9 @@ jobs:
         run: |
           haxelib setup ~/haxelib
           haxelib install hxcpp > /dev/null
-          haxelib install lime 8.0.0
+          haxelib install lime
           haxelib install openfl
-          haxelib --never install flixel 4.11.0
+          haxelib --never install flixel
           haxelib run lime setup flixel
           haxelib run lime setup
           haxelib install flixel-tools
@@ -135,11 +129,8 @@ jobs:
           haxelib install tjson
           haxelib install hxjsonast
           haxelib install hxCodec
-          haxelib install haxeui-core
           haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit
           haxelib install hscript
-          haxelib git hscript-lore https://github.com/sayofthelor/hscript-lore
-          haxelib git flixel-shadertoy-shader-lr https://github.com/sayofthelor/flixel-shadertoy-shader-lr
           haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
           haxelib install hxcpp-debug-server
